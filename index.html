@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microwave Engineering App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .left{
+            background: #007BFF;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .left img{
+            padding-right: 10px;
+        }
+        .left span{
+            color: white;
+            font-size: 30px;
+        }
+        .container{
+            display: flex;
+            background: #007BFF;
+            color: white;
+
+        }
+        .button{
+            padding-left: 750px;
+            padding-top: 30px;
+        }
+        .button button{
+            background-color: blue;
+        }
+        .button input{
+            padding: 7px 20px;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <div class="left">
+                <img src="data:image/jpeg;base64,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" alt="no image loaded" height="50px" width="50px">
+                <span>Microwave Engineering App</span>
+            </div>
+            <div class="button">
+                <input type="text" placeholder="search here">
+                <button>search</button>
+            </div>
+        </div>
+
+
+        
+    
+    <div class="dashboard">
+        <!-- Units Section -->
+        <div class="card">
+            <h2>Units</h2>
+            <ul>
+                <a href="https://drive.google.com/drive/u/0/folders/1eE95KAx5wnmjY8AfhC27NVDuFp2jpvKI"><button>Notes</button></a>   
+        </div>
+        
+        <!-- Notes Section -->
+        <div class="card">
+            <h2>Upload Notes</h2>
+            <input type="file" id="uploadNotes" accept=".pdf,.doc,.txt">
+            <button onclick="uploadNote()">Upload Note</button>
+            <ul id="notesList"></ul>
+        </div>
+        
+        <!-- Attendance Section -->
+        <div class="card">
+            <h2>Attendance</h2>
+            <p>Your Attendance: <span id="attendance">85%</span></p>
+        </div>
+        
+        <!-- Reference Books Section -->
+        <div class="card">
+            <h2>Reference Books</h2>
+            <ul>
+                <h3><a href="https://search.app/?link=http%3A%2F%2Fmwl%2Ediet%2Euniroma1%2Eit%2Fpeople%2Fpisa%2FRFELSYS%2FMATERIALE%2520INTEGRATIVO%2FBOOKS%2FPozar%5FMicrowave%2520Engineering%282012%29%2Epdf&utm_campaign=57165%2Dor%2Digacx%2Dweb%2Dshrbtn%2Diga%2Dsharing&utm_source=igadl%2Cigatpdl%2Csh%2Fx%2Fgs%2Fm2%2F5">Microwave Engineering by David M. Pozar</a></h3>
+                <h3><a href="https://search.app/sL8eFMhNpxAFkxqPA">Foundations of Microwave Engineering by Robert E. Collin</a></h3>
+                <h3><a href="https://referenceglobe.com/kpsslp/support/upload_videos/microwave-devices-and-circuits-samuel-liao_1588230228.pdf">Microwave Devices and Circuits by Samuel Y. Liao</a></h3>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function showUnit(unit) {
+            alert("Showing content for Unit " + unit);
+        }
+
+        function uploadNote() {
+            let fileInput = document.getElementById("uploadNotes");
+            let file = fileInput.files[0];
+
+            if (file) {
+                let notes = JSON.parse(localStorage.getItem("notes")) || [];
+                let fileURL = URL.createObjectURL(file);
+
+                notes.push({ name: file.name, url: fileURL });
+                localStorage.setItem("notes", JSON.stringify(notes));
+                displayNotes();
+            }
+        }
+
+        function displayNotes() {
+            let notesList = document.getElementById("notesList");
+            notesList.innerHTML = "";
+            let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+            notes.forEach((note, index) => {
+                let li = document.createElement("li");
+                li.innerHTML = `<a href="${note.url}" target="_blank">${note.name}</a> 
+                                <button onclick="deleteNote(${index})">🗑 Delete</button>`;
+                notesList.appendChild(li);
+            });
+        }
+
+        function deleteNote(index) {
+            let notes = JSON.parse(localStorage.getItem("notes")) || [];
+            notes.splice(index, 1);
+            localStorage.setItem("notes", JSON.stringify(notes));
+            displayNotes();
+        }
+
+        window.onload = displayNotes;
+    </script>
+</body>
+</html>
